@@ -29,6 +29,7 @@
     "jspdf-autotable": "^3.5.28",
     "ng-confirmation-modal": "^3.0.0",
     "ngx-csv": "^0.3.2",
+    "ngx-pagination": "^6.0.3",
     "rxjs": "~7.5.0",
     "simple-ng-loader": "^2.0.0",
     "sweetalert2": "^11.7.3",
