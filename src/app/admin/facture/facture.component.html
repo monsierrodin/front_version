@@ -1,0 +1,119 @@
+<div id="excel-export"  class="container-dasboard">
+    <div class="titreFacture">
+        Designation facture
+    </div>
+
+    <div class="stat-body">
+    <div  class="stat-header" >
+                <div *ngIf="role =='ADMIN'" class="select">
+                            <div>
+                                <select  class="form-select" (change)="getAnnee($event)">
+                                        <option value="3">---Annee---</option>
+                                        <option *ngFor="let year of years"  [value]="year">{{ year }}</option>
+                                </select>
+                            </div>
+                            <div class="moi">
+                                <select class="form-select" (change)="getMoi($event)">
+                                    <option value="12">-------Par mois------</option>
+                                    <option value="0">Janvier</option>
+                                    <option value="1">Fevrier</option>
+                                    <option value="2">Mars</option>
+                                    <option value="3">Avril</option>
+                                    <option value="4">Mai</option>
+                                    <option value="5">Juin</option>
+                                    <option value="6">Juillet</option>
+                                    <option value="7">Aout</option>
+                                    <option value="8">Septembre</option>
+                                    <option value="9">Octobre</option>
+                                    <option value="10">Novembre</option>
+                                    <option value="11">Decembre</option>
+                                </select>
+                            </div>
+                            <div class="client">
+                                <select class="form-select" (change)="getClient($event)">
+                                    <option (click)="showLabel=false" *ngFor="let email of resultat" [value]="email.reception.operationEntree.appUser.email">{{email.reception.operationEntree.appUser.nom}}</option>
+                                </select>
+                            </div>
+                </div>
+                <div class="nombre">
+
+                    <div *ngIf="totalConst !=0">
+                        <select class="form-select" (change)="type($event)" >
+                            <option value="3">Facturer par Mots</option>
+                            <option value="1">Facturer par Duree</option>
+                            <option value="2">Facturer par Pages</option>
+
+                        </select>
+                    </div>
+
+                    <div *ngIf="totalConst !=0">
+                        <input type="text" (keyup)="calculer($event)"  class="form-control unitaire" (keypress)="onKeyPress($event)" placeholder="Prix Unitaire (Ar)" >
+                    </div>
+
+                    <div *ngIf="totalConst !=0">
+                        <label class="excel" (click)="exporter()" title="Exporter" ><img src="../assets/images/excel.png" height="45px" alt=""></label>
+                    </div>
+
+        </div>
+
+    </div>
+        <div  class="card" *ngIf="resultat" >
+
+            <div class="">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="table-responsive">
+                <table class="table table-bordered ">
+
+                    <thead >
+                        <tr class="teteTable">
+                            <th>Tache</th>
+                            <th>Client</th>
+                            <th>Date</th>
+                            <th>Duree</th>
+                            <th>Pages</th>
+                            <th>Mots</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody  class="tbody bodyyy">
+                        <tr *ngFor="let item of resultat |paginate:{itemsPerPage:3,currentPage:page,totalItems:totalLenght}"  class="tr-ligne" >
+                            <td >{{item.reception.operationEntree.codeTache}}</td>
+                            <td >{{item.reception.operationEntree.appUser.nom}}</td>
+                            <td class="date">{{item.dateTraitement | date:'dd-MM-yyyy'}}</td>
+                            <td >{{item.duree}}</td>
+                            <td >{{item.page}}</td>
+                            <td >{{item.mot}}</td>
+
+                        </tr>
+                        <tr *ngIf="totalConst !=0">
+                            <td style="border: none;"></td>
+                            <td style="border: none;"></td>
+                            <td style="border: none;"></td>
+                            <td ><label *ngIf="totalDuree !=0" class="mot">Total durée : {{totalDuree}} </label></td>
+                            <td><label *ngIf="totalPage !=0" class="page">Total Pages: {{totalPage}} </label></td>
+                            <td colspan="2"><label *ngIf="totalConst !=0" class="mot">Total Mots : {{totalConst}} </label></td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot *ngIf="totalConst !=0">
+                        <tr class="montantTot">
+                        <td style="border: none;"></td>
+                        <td style="border: none;"></td>
+                        <td style="border: none;"></td>
+                        <td  colspan="4" id="total"> <label *ngIf="totalConst !=0" class="mot_total">Montant total = {{montant}} .Ar</label></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+
+                    <div class="pagination">
+                    <pagination-controls (pageChange)="page=$event"></pagination-controls>
+                    </div>
+                    </div>
+</div>
+
+    </div>
+    </div>
+
+    </div>
+</div>

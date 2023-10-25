@@ -1,0 +1,131 @@
+.action{
+  width: 3cm;
+}
+.stat-body{
+  margin-left: 20px;
+  margin-inline: 25px;
+}
+.bi-trash{
+  color: red;
+}
+.bi-pen{
+  color: green;
+}
+.card{
+  background-color: rgb(253, 253, 253);
+
+}
+.table {
+  background: #ffffff;
+  color: rgb(0, 6, 14);
+  font-size: .85rem;
+}
+.pagination{
+  display: flex;
+  justify-content: end
+}
+.teteTable{
+  background: rgb(37, 188, 214);
+
+}
+.bodyyy{
+  text-size-adjust:initial;
+}
+
+
+.test{
+  color: violet
+
+
+}
+.body{
+  color: black
+
+
+}
+.daty {
+  font-size: 25px;
+  height: 35px;
+  cursor: pointer;
+  border-radius: .3rem;
+
+}
+.container-dasboard {
+  width: 100%;
+  padding: 1rem;
+  min-width: 900px;
+  zoom: .8;
+}
+
+.header-page {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.haeder-body {
+  flex: 1;
+  margin-left: 4px;
+  box-shadow: 0px 7px 5px rgb(184, 180, 187);
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+
+.info {
+  display: flex;
+}
+
+.total {
+  margin-left: 3px;
+  font-size: 40;
+  font-weight: bolder;
+}
+
+.stat-header {
+  display: flex;
+  width: 50%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  justify-content: space-between;
+}
+.test{
+  background-color: gray;
+  height: 35px;
+}
+.Titre1{
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color:rgb(59, 101, 150);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.telechrgements{
+  text-align: center;
+  width: 20%;
+}
+.telechrgement{
+  text-align: center;
+  width: 100%;
+}
+
+.telechrgement:hover{
+  background-color: rgb(10, 127, 255);
+}
+@media screen and(max-width:800px) {
+
+  .table {
+      background: #ffffff;
+      color: rgb(0, 6, 14);
+      font-size: .55rem;
+
+
+  }
+  .pagination{
+      display: flex;
+      justify-content:center
+  }
+}

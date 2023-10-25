@@ -1,0 +1,28 @@
+<div class="containera ">   
+    <div title="@Rodin" class="Wrapper">
+        <div class="titre1" >
+        </div>
+        <form [formGroup]="loginForm" class="test" (ngSubmit)="authentification()">
+            <label for="" class="labelEmail">Email</label>  
+            <div class="input_emai"> 
+                <input type="text" class="input_email_text" placeholder="Adresse email" formControlName="email">
+                <small *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].touched" class="text-danger alert">
+                  [Obligatoire[@]]
+                
+                </small>
+            </div>
+            <label for="password" class="labelEmail">Mot de passe</label> 
+            <div class="input_emai">
+                <input type="password" class="input_email_text" autocomplete="current-password"  placeholder="mot de passe " formControlName="password">
+
+                <small *ngIf="loginForm.controls['password'].errors && loginForm.controls['password'].touched" class="text-danger alert">
+                    8 à 20 caractères
+                </small>
+            </div>
+            <div class="">
+                <button   [disabled]="loginForm.invalid" type="submit" class="btn but">Connexion</button>
+            </div>
+        </form>
+        
+     </div>
+</div>

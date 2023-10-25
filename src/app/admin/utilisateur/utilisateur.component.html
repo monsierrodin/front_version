@@ -1,0 +1,82 @@
+<div class="container-utilisateurw">
+    <div class="header-utilisateur">
+        <span>Liste utilisateurs</span>
+    </div>
+    <div class="table-utilisateur">
+
+        <form [formGroup]="formUtilisateur" (ngSubmit)="enregitrerUtilisateur()">
+            <div class="class">
+                <span class="new">Ajout utilisateur</span>
+            </div>
+            <div class="class">
+                <label for="form-label">Nom/prenom:</label>
+                <input type="text" placeholder="Nom utilisateur" class="form-control" formControlName="nom">
+            </div>
+            <div class="class">
+                <label for="">Email:</label>
+                <input type="email" placeholder="Entrer email" class="form-control" formControlName="email">
+                <small *ngIf="formUtilisateur.controls['email'].errors && formUtilisateur.controls['email'].touched" class="text-danger alert">
+                    email Invalid
+                </small>
+            </div>
+            <div class="class">
+                <label for="">Password:</label>
+                <input type="text" placeholder="Entrer password" class="form-control" formControlName="password">
+                    <small *ngIf="formUtilisateur.controls['password'].errors && formUtilisateur.controls['password'].touched" class="text-danger alert">
+                      8 à 20 caractères
+                  </small>
+            </div>
+            <div class="class">
+                <label for="">Role:</label>
+                <select name="" id="" formControlName="role" class="form-select">
+                    <option value="admin">Admin</option>
+                    <option value="backoffice">BackOfiice</option>
+                    <option value="client">Client</option>
+                </select>
+            </div>
+            <div class="class">
+               <button [disabled]="formUtilisateur.invalid" class="btn btn-primary" type="submit">Ajouter</button>
+
+            </div>
+        </form>
+        <div class="col-lg-8 col-md-6 col-sm-6">
+            <div class="table">
+                    <table class="table ">
+                        <thead class="teteTable">
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th class="status">Status</th>
+                                <th class="status">Etat</th>
+                                <th class="action">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of user | async |paginate:{itemsPerPage:15,currentPage:page,totalItems:totalLenght}  " >
+                                <td>{{item.id}}</td>
+                                <td>{{item.nom}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.role}}</td>
+                                <td>
+                                    <button class="btn active stat" *ngIf="item.status==0" title="Desactivé" (click)="desactiverCompter(item.id)" style="color:rgb(20,20,20)"><i class="bi bi-toggle-off ico"></i></button>
+                                    <button class="btn active stat" *ngIf="item.status==1" title="Activé" (click)="desactiverCompter(item.id)" style="color:rgb(20,127,255)"><i class="bi bi-toggle-on ico"></i></button>
+                                </td>
+                                <td>
+                                  <button [disabled]="item.etat==0" class="btn active stat" *ngIf="item.etat==0" title="Déconnecté" (click)="desactiverEtat(item.id)" style="color:rgb(170, 165, 165)"><i class="bi bi-toggle-off ico"></i></button>
+                                  <button class="btn active stat" *ngIf="item.etat==1" title="Connecté" (click)="desactiverEtat(item.id)" style="color:rgb(7, 158, 87)"><i class="bi bi-toggle-on ico"></i></button>
+                                </td>
+                                <td>
+                                    <button title="supprimer" class="btn btn supp" (click)="supUser(item.id,item.role)"> <i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <pagination-controls (pageChange)="page=$event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

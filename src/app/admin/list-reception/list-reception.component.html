@@ -1,0 +1,38 @@
+
+
+<div class="container-dasboard">
+  <Label class="Titre1">Taches  BackOffice</Label>
+  <div class="stat-body">
+          <div class="card" >
+  <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="table-responsive">
+          <table class="table table-responsive table-bordered">
+              <thead class="teteTable">
+                  <tr>
+                      <th>Tache</th>
+                      <th>Client</th>
+                      <th>BackOffice</th>
+                      <th>Date de reception</th>
+                      <th class="telechrgements">Document Word</th>
+                      <th class="telechrgements">Audio</th>
+                  </tr>
+              </thead>
+              <tbody *ngFor="let item of listeReceptionsBack |paginate:{itemsPerPage:8,currentPage:page,totalItems:totalLenght}  " class="contenu">
+                  <tr >
+                      <td>{{item.taches}}</td>
+                      <td>{{item.operationEntree.appUser.nom}}</td>
+                      <td>{{item.appUser.nom}}</td>
+                      <td>{{item.dateReception | date:'dd-MM-yyyy'}}</td>
+                      <td><a type="button" class="btn btn-secondary telechrgement" (click)="telecha(item.operationEntree.codeTache,item.operationEntree.nameDoc,item.operationEntree.nomDocument)">Telecharger</a></td>
+                      <td><a type="button" class="btn btn-secondary telechrgement" (click)="telechaAudio(item.taches,item.operationEntree.nameAudio,item.operationEntree.nomAudio)">Telecharger</a></td>
+                  </tr>
+              </tbody>
+          </table>
+          <div class="pagination">
+              <pagination-controls (pageChange)="page=$event"></pagination-controls>
+          </div></div>
+      </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,11 @@
+.registre-container{
+    width: 100%;
+    height: 100vh;
+    background-color: aqua;
+    display: flex;
+}
+.nav-bar{
+    width: 5rem;
+    background-color: blue;
+    height: 100vh;
+}

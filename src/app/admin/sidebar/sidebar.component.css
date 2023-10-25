@@ -1,0 +1,44 @@
+.sidebar-container {
+    height: 70px;
+    box-shadow: 0px 4px 1px rgb(235, 233, 236);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    min-width: 900px;
+    zoom: .8;
+}
+.deconnection {
+    display: flex;
+    align-items: center;
+
+
+
+}
+.btn{
+    padding-left:1rem;
+}
+.deconnexion-btn {
+    font-size: 24px;
+    padding-right: 1rem;
+    cursor: pointer;
+}
+.label{
+    font-size: 18px;
+    font-style: normal;
+
+}
+@media screen and(max-width:600px) {
+    .deconnexion-btn {
+        font-size: 22px;
+        padding-right: 0rem;
+        cursor: pointer;
+    }
+    .sidebar-container {
+        height: 50px;
+        box-shadow: 0px 4px 1px rgb(235, 233, 236);
+        justify-content: space-between;
+        position: relative;
+    }
+}
+

@@ -1,0 +1,45 @@
+<div class="cont">
+
+    <div class="row col-sm-12 contain">
+
+        <div class="col-sm-4 offset-sm-4 rechercher">
+            <div class="input-group">
+                <input type="search" (keyup)="chercherReception($event)"  class="form-control" placeholder="chercher par N° Tache" >
+                <button class="btn btn-info">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+        <div>
+            <label *ngIf="nombre ==0" class="vide">Vous n'avez pas encore de taches encours</label>
+        </div>
+
+        <div class="col-sm-11 offset-sm-1 corp">
+
+            <div  class="row" >
+
+                <div *ngFor="let item of listeReceptionsBack"  action=""  class="col-sm-2"   >
+                    <div >
+                    <div  class="card m-6"  >
+                        <div  class="card-body" >
+                            <h4  >Tache{{item.taches}} <hr></h4>
+                            <p  class=""><strong>Date </strong>{{item.dateReception }}</p>
+                            <p  title="Statut;" style="color: hsl(189, 94%, 56%);" class="">{{item.operationEntree.status}}</p>
+                            <p  class="d-grid"><a type="button" class="btn btn-secondary" (click)="telecha(item.operationEntree.codeTache,item.operationEntree.nameDoc,item.operationEntree.nomDocument)">Telecharger document</a></p>
+                            <p  class="d-grid"><a type="button" class="btn btn-secondary" (click)="telechaAudio(item.taches,item.operationEntree.nameAudio,item.operationEntree.nomAudio)">Telecharger audio</a></p>
+                            <hr>
+                            <p  class="d-grid"><a class="btn btn-warning dede" type="button" (click)="rendre(item.id)">Rendre </a></p>
+                        </div>
+                    </div>
+
+                </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+

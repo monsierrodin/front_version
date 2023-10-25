@@ -1,0 +1,215 @@
+.test{
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+}
+.input_email_text{
+    font-family: Montserrat,sans-serif;
+    border: 1px solid #dce2ea;
+    border-radius: 10px;
+    padding: 15px 19px;
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: .428571px;
+    color: #697388;
+    font-weight: 500;
+    flex-grow: 1;
+    height: unset!important;
+    background: #fff;
+}
+
+.input_emai{
+
+    display: flex;
+    margin-top: 6px;
+    min-width: 400px;
+
+}
+
+.alert{
+    padding-left: 0.5rem;
+}
+
+.inputpswd{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 40px;
+    letter-spacing: .428571px;
+    color: #1d293b;
+    max-width: 500px;
+
+}
+.labelEmail{
+    font-weight: 500;
+    font-size: 20px;
+
+    letter-spacing: .428571px;
+    color: #1d293b;
+    max-width: 500px;
+
+}
+.Wrapper{
+    background: #fff;
+    border-radius: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 30px;
+    position: relative;
+    zoom: .8;
+    box-shadow: 2px 12px 3px 2px rgb(128, 137, 141);
+}
+.tet1{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 50px;
+    color: rgb(102, 89, 89);
+    padding-top: 0.5rem;
+}
+
+.containera{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(37, 188, 214);
+    background-size: cover;
+    width: 100%;
+    min-width: 700px;
+
+
+    form{
+
+        backdrop-filter: blur(2000px);
+        border-radius: 10px;
+        box-shadow: 0px 1000px 3000px rgba(226, 205, 205, 0.5);
+        font-size: 15px;
+        width: 400px;
+        height: 320px;
+        .input_form{
+            margin: 1rem ;
+            input{
+                margin-top: .9rem;
+                font-size: 15px;
+            }
+            button{
+                width: 100%;
+            }
+        }
+    }
+    tete {
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+
+}
+.image{
+    padding-top: 3px;
+    padding-left: 3px;
+}
+.titre1{
+    display: flex;
+    margin-bottom: 10px;
+    height: 180px;
+    width: 300px;
+    background:url("../../assets/images/logo.png") no-repeat;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+}
+.tete{
+
+    font-weight: bold;
+    padding-left:  2.1cm;
+    font-size: 23px;
+    text-shadow: 2ch;
+    width: 100%;
+
+   // background: url('assets/images/photo.jpg');
+}
+.but{
+margin-top: 28px;
+background-color: #61bdf6;
+-webkit-user-select: none;
+-moz-user-select: none;
+user-select: none;
+display: inline-block;
+vertical-align: top;
+border: none;
+-webkit-font-smoothing: antialiased;
+cursor: pointer;
+white-space: nowrap;
+text-decoration: none;
+border-radius: 10px;
+color: #fff;
+font-weight: 500;
+font-size: 20px;
+line-height: 40px;
+letter-spacing: .428571px;
+padding: 20px;
+text-align: center;
+width: 100%;
+}
+@media screen and(max-width:800px) {
+    .Wrapper{
+        background: #fff;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 25px;
+        position: relative;
+         zoom: .8;
+    }
+    .containera{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: rgb(37, 188, 214);
+        background-size: cover;
+        width: 100%;
+        min-width: 300px;
+        zoom: .8;
+
+
+        form{
+
+            backdrop-filter: blur(2000px);
+            border-radius: 10px;
+            box-shadow: 0px 1000px 3000px rgba(226, 205, 205, 0.5);
+            font-size: 15px;
+            width: 400px;
+            height: 320px;
+            .input_form{
+                margin: 1rem ;
+                input{
+                    margin-top: .9rem;
+                    font-size: 15px;
+                }
+                button{
+                    width: 100%;
+                }
+            }
+        }
+        tete {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+
+    }
+
+}
+
+
+
+

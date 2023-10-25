@@ -1,0 +1,294 @@
+<div class="apros__container">
+  <div class="apros__header">
+      <div class="text__devirz">
+          <span class="span__devirz"><span class="text__d">D</span>evIRZ</span>
+      </div>
+      <div class="text__singification">
+          <p><span>Dev</span>ellopement <span>I</span>nformatique avec <span>R</span>odin & <span>Z</span>o</p>
+      </div>
+  </div>
+
+
+  <!--___________________         apropos     ______________ -->
+  <div class="apropos">
+
+      <!--___________________         Rodin     ______________ -->
+      <div class="apros__rodin">
+          <div class="image__rodin">
+              <img title="Ingénieur En Informatique" src="./../../assets/images/R_B.JPG" alt="">
+          </div>
+          <div class="about__rodin">
+              <div class="text__salutation">
+                  <div class="div__salutaion">
+                      <p class="p1">Hi, Je suis <span> Rodin</span></p>
+                      <p class="p2">Developpeur Full-stack</p>
+                      <p class="p2">Ingénieur En Informatique</p>
+
+                      <div class="button">
+                          <button (click)="openModalIsRodin()" class="btn btn__experience">Experiences</button>
+                          <button class="btn btn__cv">Cv</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+       <!--___________________         ZO     ______________ -->
+      <div class="apros__zo">
+          <div class="image__zo">
+              <img src="./../../assets/images/zo.jpg" alt="">
+          </div>
+          <div class="about__zo">
+              <div class="text__salutation">
+                  <div class="div__salutaion">
+                      <p class="p1">Hi, Je suis <span>Zo</span></p>
+                      <p class="p2">Developpeur Full-stack</p>
+                      <p class="p2">Ingénieur En Informatique</p>
+                      <div class="button">
+                          <button (click)="openModalIsZo()" class="btn btn__experience">Experience</button>
+                          <button class="btn btn__cv">Cv</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!--___________________         myservice__et__contact      ______________ -->
+  <div class="myservice__et__contact">
+
+       <!--___________________         myservice      ______________ -->
+      <div class="my__service">
+          <div class="text__service">
+              <span class="span__title">Notre services</span>
+              <span class="span__style"></span>
+          </div>
+          <div class="liste__service">
+             <div class="service__1">
+                  <span class="span__titlee">Developpement Web </span>
+                  <div class="myliste">
+                      <span>Application web</span>
+                      <span>Site web</span>
+                      <span>Site e-commerce</span>
+                      <span>site vitrine</span>
+                      <span>Etc...</span>
+                  </div>
+             </div>
+             <div class="service__1">
+                  <span class="span__titlee">Mobile</span>
+                  <div class="myliste">
+                      <span><span class="span__stylee"></span>Application Mobile</span>
+                      <span>Creation d'applicaion android</span>
+                      <span>Creation d'applicaion Ios</span>
+                      <span>Etc...</span>
+                  </div>
+              </div>
+              <div class="service__1 service__bureau">
+                  <span class="span__titlee">Bureau</span>
+                  <div class="myliste">
+                  <span>Creation d'application desktop</span>
+                  <span>Creation d'application lourd</span>
+                  <span>Etc...</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!--___________________         contact     ______________ -->
+      <div class="my__contact">
+          <div class="text__contact">
+              <span class="span__title">Contacts</span>
+              <span class="span__style"></span>
+          </div>
+          <div class="tous__contact">
+              <!--___________________         sociaux    ______________ -->
+             <div class="resaux__sociaux">
+                  <div class="mail__phon">
+                      <div class="__email">
+                          <span>devirz.com</span>
+                          <span>devirz@gmail.com</span>
+                      </div>
+                      <div class="__phone">
+                          <span>+261 34 71 445 97</span>
+                          <span>+261 34 20 935 90</span>
+                      </div>
+                  </div>
+                  <div class="__sociaux">
+                      <div class="facebook">
+                          <a href="facebook.com"><i class="bi bi-facebook"> </i></a>
+                      </div>
+                      <div class="Whatsapp">
+                          <a href="facebook.com"><i class="bi bi-whatsapp"></i></a>
+                      </div>
+                      <div class="twitter">
+                          <a href=""><i class="bi bi-twitter"></i></a>
+                      </div>
+                  </div>
+             </div>
+
+              <!--___________________         form mail   ______________ -->
+             <form [formGroup]="fomrMail" (ngSubmit)="handleMessage()">
+                  <div class="form-group">
+                      <input type="text" formControlName="email" class="form-control" placeholder="Votre email" id="">
+                  </div>
+                  <div class="form-group">
+                      <input type="text"formControlName="object" class="form-control" placeholder="Object" id="">
+                  </div>
+                  <div class="form-group">
+                      <textarea name="" formControlName="message" class="form-control" id="" cols="30" rows="3" placeholder="Votre message"></textarea>
+                  </div>
+                  <button [disabled]="!fomrMail.valid" type="submit" class="btn">Envoyer</button>
+
+             </form>
+          </div>
+      </div>
+  </div>
+  <!--___________________         modal experienece   ______________ -->
+  <div *ngIf="modalRodin" class="experience__rodin">
+      <div class="body__experience">
+          <div class="experience__header">
+              <span class="span__rodin"> Rodin <span class="span__nom">Bertrand</span></span>
+              <div class="text__monexperience">
+                  <span>Mes experieces</span>
+              </div>
+              <span (click)="closeModalIsRodin()"  class="span__ferme"><i class="bi bi-x-lg"></i></span>
+          </div>
+          <div class="experience__liste">
+              <div class="premiere__liste">
+                  <div class="my__experience">
+                      <span class="text__langage">Angular</span>
+                      <span class="text__niveau">Expert</span>
+                      <div class="rating">
+                          <div class="rating__bar"></div>
+                          <span>80%</span>
+                      </div>
+                  </div>
+                  <div class="my__experience">
+                      <span class="text__langage">Html, Css, Js</span>
+                      <span class="text__niveau">Expert</span>
+                      <div class="rating">
+                          <div class="rating__barhtml"></div>
+                          <span>85%</span>
+                      </div>
+                  </div>
+                  <div class="my__experience">
+                      <span class="text__langage">React js</span>
+                      <span class="text__niveau">Intermediaire</span>
+                      <div class="rating">
+                          <div class="rating__barRact"></div>
+                          <span>60%</span>
+                      </div>
+                  </div>
+                  <div class="my__experience">
+                      <span class="text__langage">Flutter</span>
+                      <span class="text__niveau">Intermediaire</span>
+                      <div class="rating">
+                          <div class="rating__barFlutter"></div>
+                          <span>60%</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="dexieme__liste">
+                  <div class="my__experience">
+                      <span class="text__langage">Java (Swing,Spring,Hibernate,...)</span>
+                      <span class="text__niveau">Expert</span>
+                      <div class="rating">
+                          <div class="rating__bar"></div>
+                          <span>80%</span>
+                      </div>
+                  </div>
+                  <div class="my__experience">
+                      <span class="text__langage">Python(Django)</span>
+                      <span class="text__niveau">Intermediaire</span>
+                      <div class="rating">
+                          <div class="rating__barPython"></div>
+                          <span>60%</span>
+                      </div>
+                  </div>
+                  <div class="my__experience">
+                      <span class="text__langage">Vps serveur</span>
+                      <span class="text__niveau">Expert</span>
+                      <div class="rating">
+                          <div class="rating__bar"></div>
+                          <span>80%</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!--___________________         modal Zoo_______   ______________ -->
+  <div *ngIf="modalZo"  class="experience__zo">
+      <div class="body__experience">
+          <div class="experience__header">
+              <span class="span__rodin">Zo <span class="span__nom">Andrianambinina</span></span>
+              <div class="text__monexperience">
+                  <span>Mon experiece</span>
+              </div>
+              <span (click)="closeModalIsZo()"  class="span__ferme"><i class="bi bi-x-lg"></i></span>
+          </div>
+          <div class="experience__liste">
+              <div class="premiere__liste">
+                  <div class="my__experience">
+                      <span class="text__langage">Angular</span>
+                      <span class="text__niveau">Expert</span>
+                      <div class="rating">
+                          <div class="rating__bar"></div>
+                          <span>80%</span>
+                      </div>
+                  </div>
+                  <div class="my__experience">
+                      <span class="text__langage">Html, Css, Js</span>
+                      <span class="text__niveau">Expert</span>
+                      <div class="rating">
+                          <div class="rating__barhtml"></div>
+                          <span>85%</span>
+                      </div>
+                  </div>
+                  <div class="my__experience">
+                      <span class="text__langage">React js, Native</span>
+                      <span class="text__niveau">Intermediaire</span>
+                      <div class="rating">
+                          <div class="rating__barRact"></div>
+                          <span>70%</span>
+                      </div>
+                  </div>
+                  <div class="my__experience">
+                      <span class="text__langage">Flutter</span>
+                      <span class="text__niveau">Intermediaire</span>
+                      <div class="rating">
+                          <div class="rating__barFlutter"></div>
+                          <span>60%</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="dexieme__liste">
+                  <div class="my__experience">
+                      <span class="text__langage">Java (Swing,Spring,Hibernate,...)</span>
+                      <span class="text__niveau">Expert</span>
+                      <div class="rating">
+                          <div class="rating__bar"></div>
+                          <span>80%</span>
+                      </div>
+                  </div>
+                  <div class="my__experience">
+                      <span class="text__langage">ASP.NET Core, EF Core</span>
+                      <span class="text__niveau">Intermediaire</span>
+                      <div class="rating">
+                          <div class="rating__barPython"></div>
+                          <span>70%</span>
+                      </div>
+                  </div>
+                  <div class="my__experience">
+                      <span class="text__langage">Vps serveur</span>
+                      <span class="text__niveau">Expert</span>
+                      <div class="rating">
+                          <div class="rating__bar"></div>
+                          <span>80%</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

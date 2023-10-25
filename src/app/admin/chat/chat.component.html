@@ -1,0 +1,185 @@
+<div class="container">
+   
+        <div class="list-user ">
+            <div>    
+                <div class="search-box">
+                    <div>
+                        <input type="text" name="" id="" placeholder="Chercher l'Ulitisateur">
+                        <i class="bi bi-search"></i>
+                    </div>
+                </div>
+                <div *ngIf="role=='ADMIN'" class="groupe">
+                        <label (click)="creerGroup()" class="creer" for=""><i class="bi bi-plus"></i>groupe de discussion</label>
+                </div>
+                <div *ngIf="role=='ADMIN'"  class="chatList">
+                    <div *ngFor="let itemsss of messGroup3 " (click)="destinationGroup(itemsss.groupe)"  class="block">
+                        <div class="imgBox">
+                            <img class="sary" src="../assets/images/group.png" width="30px" height="30px" >
+                        </div>
+                        <div class="lili">
+                           <h6 > {{itemsss.groupe}}</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="chatList">
+                  
+                    <div *ngFor="let itemss of messGroup2 " (click)="destinationGroup(itemss.groupe)"  class="block">
+                        <div class="imgBox">
+                            <img class="sary" src="../assets/images/group.png" width="30px" height="30px" >
+                        </div>
+                        <div class="lili">
+                           <h6 > {{itemss.groupe}}</h6>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chatList">
+                    <div *ngFor="let item of user " (click)="destinationId(item.id,item.nom)" class="block">
+                        <div class="imgBox">
+                            <img class="sary" src="../assets/images/user1.png" width="30px" height="30px" >
+                        </div>
+                        <div class="lili">
+                           <h6 > {{item.nom}}</h6>
+                        </div>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+
+            </div>
+        
+        </div>
+        <div class="contenu">    
+                <div class="corpMessage ">
+                    <div *ngIf="IdDestination!=99999" class="nomUser">
+                        <img class="profile" src="../assets/images/user1.png" width="30px" height="30px" >
+                        <label class="votreNom">{{nomUser}}</label>
+                    </div> 
+                    <div *ngIf="IdDestination==99999"  class="nomUser">
+        
+                        <label class="votreNom">{{nomGroup}}</label>
+                    </div>
+                    
+                    <div  class="chatMessage">
+                        <div *ngIf="IdDestination!=99999">
+                          <div *ngFor="let item of mes">
+                            <div class="chat-message">
+                            <p *ngIf="item.userDest==idUser && item.userInit==IdDestination">{{item.message}}<br>
+                                <span class="date">{{item.dateMessage | date:'dd-mm-yyyy'}}</span>
+                            </p>
+                            </div>
+                            <div class="chat-message darker">
+                            <p *ngIf="item.userInit==idUser && item.userDest==IdDestination">{{item.message}} <br>
+                                <span class="date">{{item.dateMessage | date:'dd-mm-yyyy'}}</span>
+                            </p>
+                           </div>
+                           </div>
+                        </div>
+                        <div *ngIf="IdDestination==99999">
+                                <div *ngIf="nomGroup!='Creation du groupe de discussion'">
+                                    <div *ngIf="IdDestination==99999">
+                                        <div *ngFor="let iteme of groupeMessage">
+                                          <div class="chat-message">
+                                          <p *ngIf="iteme.userInit!=idUser ">{{iteme.message}}<br>
+                                              <span class="date">{{iteme.dateMessage | date:'dd-mm-yyyy'}}</span>
+                                          </p>
+                                          </div>
+                                          <div class="chat-message darker">
+                                          <p *ngIf="iteme.userInit==idUser ">{{iteme.message}} <br>
+                                              <span class="date">{{iteme.dateMessage | date:'dd-mm-yyyy'}}</span>
+                                          </p>
+                                         </div>
+                                         </div>
+                                      </div>
+
+                                </div>
+                        
+                                <div *ngIf="nomGroup=='Creation du groupe de discussion'">
+                                    <div>
+                                        <form [formGroup]="formMessageGroupe" (ngSubmit)="createMessageGroupe()" class="shadow p-5 formCreate">
+                                            <div class="textGroup">
+                                                <Label>Creer votre groupe</Label>
+                                            </div>
+                                            <div>
+                                                <input type="text" (keyup)="chercherGroup($event)" placeholder="Nom du votre groupe" class="form-control " formControlName="groupe">
+                                            </div>
+                                            <div class="valider">
+                                                <button [disabled]="formMessageGroupe.invalid" class="btn btn-primary" type="submit">Valider</button>
+                                            </div>   
+                                        </form>
+                                        
+                                        <div class="GroupList">
+                                            <div>
+                                                <div class="client">
+                                                    <select class="form-select" (change)="type($event)">
+                                                        <option   *ngFor="let email of user"   [value]="email.id" >{{email.nom}}</option>                  
+                                                    </select>     
+                                                </div>
+                                            </div>
+                                            <div *ngFor="let items of messGroup "  class="block">
+                                                <div class="dispo">
+                                                    <div class="disponiblilite">
+                                                    <div class="imgBox">
+                                                        <img class="sary" src="../assets/images/group.png" width="30px" height="30px" >
+                                                    </div>
+                                                    <div class="lili">
+                                                    <h6 > {{items.groupe}}</h6>
+                                                    </div>
+                                                    <div class="person">
+                                                        <label >Personne:</label>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="placeInvite">
+                                                    <div class="">
+                                                        <label (click)="InvitelistGroup4(items.groupe)" class="inviter">Inviter</label>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                    </div> 
+                <div> 
+                <div *ngIf="IdDestination!=99999">
+                    <div class="messageEnvoie">               
+                        <form    [formGroup]="formMessage" (ngSubmit)="create()" class="shadow p-2 form" >
+                        <div class="input-group ">
+                                    <p class="icon"><i class="bi bi-chat"></i></p>
+                                    <textarea type="search"  formControlName="message" class="form-control textArea" placeholder="votre message" > </textarea>
+                                    <button [disabled]="formMessage.invalid"  *ngIf="formMessage.invalid"  class="btn no_sending ">
+                                        <img src="../assets/images/no_send.png" height="35px" alt="">
+                                    </button> 
+        
+                                    <button *ngIf="formMessage.valid" type="submit"  class="btn sending">
+                                        <img src="../assets/images/send.png" height="35px" alt="">
+                                    </button>         
+                        </div>
+                       </form>
+                        </div>
+                    </div>
+                    <div>
+                <div *ngIf="IdDestination==99999 && nomGroup!='Creation du groupe de discussion' " class="messageEnvoie"> 
+                    
+                <form    [formGroup]="formMessGroup" (ngSubmit)="createMessGroupe()" class="shadow p-2 form" >
+                <div class="input-group ">
+                            <p class="icon"><i class="bi bi-chat"></i></p>
+                            <textarea type="search"  formControlName="message" class="form-control textArea" placeholder="votre message" > </textarea>
+                            <button [disabled]="formMessGroup.invalid"  *ngIf="formMessGroup.invalid"  class="btn no_sending ">
+                                <img src="../assets/images/no_send.png" height="35px" alt="">
+                            </button> 
+
+                            <button *ngIf="formMessGroup.valid" type="submit"  class="btn sending">
+                                <img src="../assets/images/send.png" height="35px" alt="">
+                            </button>         
+                </div>
+               </form>
+                </div>
+            </div>
+
+</div>

@@ -1,0 +1,103 @@
+
+<div class="container-dasboard">
+    <div class="header-page">
+        <div class="list"> Liste taches traitées </div>
+    </div>
+     <div class="stat-body">
+        <div *ngIf="data_nombre !=0" class="stat-header">
+            <div >
+            <div class="input-group" *ngIf="role =='CLIENT' || 'BACKOFFICE'">
+                    <input type="search" (keyup)="chercherReception($event)" class="form-control">
+                    <button class="btn btn-info">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    </div>
+            </div>
+            </div>
+            <div>
+        </div>
+        <div>
+            <label *ngIf="role =='ADMIN' && data_nombre ==0"  class="vide">Aucune tache à valider </label>
+            <label *ngIf="role !='ADMIN' && data_nombre ==0"  class="vide">Aucune tache traitée</label>
+        </div>
+            <div class="card" *ngIf="resultat" >
+                <div class="">
+<div *ngIf="data_nombre !=0" class="col-lg-12 col-md-12 col-sm-12">
+    <div class="table-responsive">
+            <table  class="table table-bordered ">
+
+                <thead class="teteTable">
+                    <tr>
+                        <th>Id</th>
+                        <th *ngIf="role !=='CLIENT'">Client</th>
+                        <th>Date d'envoie</th>
+                        <th>Date retour</th>
+                        <th>Pages</th>
+                        <th>Mots</th>
+                        <th>Duree Audio</th>
+                        <th *ngIf="role =='CLIENT'">Message</th>
+                        <th>Audio</th>
+                        <th>Compte Rendu</th>
+                        <th *ngIf="role =='ADMIN'" class="text action">Annulation</th>
+                        <th *ngIf="role =='ADMIN'" class="text action">Validation</th>
+                        <th *ngIf="role =='BACKOFFICE'" class="text action_back">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of resultat " class="tbody fkf">
+                    <tr *ngIf="item.reception.operationEntree.status =='En Attente'" class="tr-ligne" >
+                        <td *ngIf="role =='ADMIN'">{{item.reception.operationEntree.codeTache}}</td>
+                        <td *ngIf="role =='ADMIN'">{{item.reception.operationEntree.appUser.nom}}</td>
+                        <td *ngIf="role =='ADMIN'" class="date">{{item.reception.operationEntree.dateOperation | date:'d/M/yy - h:mm:ss'}}</td>
+                        <td *ngIf="role =='ADMIN'" class="date">{{item.dateTraitement | date:'d/M/yy - h:mm:ss'}}</td>
+                        <td *ngIf="role =='ADMIN'">{{item.page}}</td>
+                        <td *ngIf="role =='ADMIN'">{{item.mot}}</td>
+                        <td *ngIf="role =='ADMIN'">{{item.duree}}</td>
+                        <td *ngIf="role =='ADMIN'"><span class="telechargemt" (click)="telechaAudio(item.reception.taches,item.reception.operationEntree.nameAudio,item.reception.operationEntree.nomAudio)">TelechargerAudio</span></td>
+                        <td *ngIf="role =='ADMIN'"><span class="telechargemt" (click)="telechargerTraitement(item.id,item.reception.operationEntree.nameDoc,item.reception.operationEntree.nomDocument)">Telecharger</span></td>
+                        <td *ngIf="role =='ADMIN'" >
+                        <button  class="btn refuser" (click)="RefuserTraitement(item.id)" >Refuser</button>
+                        </td>
+                        <td *ngIf="role =='ADMIN'" >
+                        <button  class="btn okok" (click)="validerTraitement(item.id)" > Accepter </button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="item.reception.operationEntree.status =='Traitée'" class="tr-ligne" >
+                        <td *ngIf="role =='BACKOFFICE'">{{item.reception.operationEntree.codeTache}}</td>
+                        <td *ngIf="role =='BACKOFFICE'">{{item.reception.operationEntree.appUser.nom}}</td>
+                        <td *ngIf="role =='BACKOFFICE'" class="date">{{item.reception.operationEntree.dateOperation | date:'d/M/yy - h:mm:ss'}}</td>
+                        <td *ngIf="role =='BACKOFFICE'" class="date">{{item.dateTraitement | date:'d/M/yy - h:mm:ss'}}</td>
+                        <td *ngIf="role =='BACKOFFICE'">{{item.page}}</td>
+                        <td *ngIf="role =='BACKOFFICE'">{{item.mot}}</td>
+                        <td *ngIf="role =='BACKOFFICE'">{{item.duree}}</td>
+                        <td *ngIf="role =='BACKOFFICE'"><span class="telechargemt" (click)="telechaAudio(item.reception.taches,item.reception.operationEntree.nameAudio,item.reception.operationEntree.nomAudio)">TelechargerAudio</span></td>
+                        <td *ngIf="role =='BACKOFFICE'"><span class="telechargemt" (click)="telechargerTraitement(item.id,item.reception.operationEntree.nameDoc,item.reception.operationEntree.nomDocument)">Telecharger</span></td>
+                        <td *ngIf="role =='BACKOFFICE'">
+                        <button *ngIf="role =='BACKOFFICE'" class="btn btn-primary mod" (click)="modifier(item.id)" ><i class="bi bi-pen"></i></button>
+
+                        </td>
+                    </tr>
+                    <tr *ngIf="item.reception.operationEntree.status =='Traitée'" class="tr-ligne" >
+                        <td *ngIf="role =='CLIENT'">{{item.reception.operationEntree.codeTache}}</td>
+                        <td *ngIf="role =='CLIENT'"class="date">{{item.reception.operationEntree.dateOperation | date:'d/M/yy - h:mm:ss'}}</td>
+                        <td *ngIf="role =='CLIENT'"class="date">{{item.dateTraitement | date:'d/M/yy - h:mm:ss'}}</td>
+                        <td *ngIf="role =='CLIENT'">{{item.page}}</td>
+                        <td *ngIf="role =='CLIENT'">{{item.mot}}</td>
+                        <td *ngIf="role =='CLIENT'">{{item.duree}}</td>
+                        <td *ngIf="role =='CLIENT'"><span class="telechargemt" (click)="voirmessage(item.message)">voir message</span></td>
+                        <td *ngIf="role =='CLIENT'"><span class="telechargemt" (click)="telechaAudio(item.reception.taches,item.reception.operationEntree.nameAudio,item.reception.operationEntree.nomAudio)">TelechargerAudio</span></td>
+                        <td *ngIf="role =='CLIENT'"><span class="telechargemt" (click)="telechargerTraitement(item.id,item.reception.operationEntree.nameDoc,item.reception.operationEntree.nomDocument)">Telecharger</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+        </div>
+        </div>
+
+    </div>
+
+</div>
+
+

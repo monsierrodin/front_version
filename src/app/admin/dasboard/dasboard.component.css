@@ -1,0 +1,122 @@
+.container-dasboard {
+    width: 100%;
+    padding: 1rem;
+    min-width: 900px;
+    zoom: .8;
+
+}
+.pagination{
+    display: flex;
+    justify-content: end;
+}
+
+.table {
+    background: #ffffff;
+    color: rgb(0, 6, 14);
+    font-size: .85rem;
+
+
+}
+.teteTable{
+    background: rgb(37, 188, 214);
+
+}
+.bodyyy{
+    text-size-adjust:initial;
+}
+
+.header-page {
+    display: flex;
+    justify-content: space-between;
+
+}
+.select{
+    display: flex;
+
+}
+.client{
+    padding-left: 1rem;
+}
+.nombre{
+    padding-top: 3rem;
+    display: flex;
+
+}
+.page{
+    font-weight: bold;
+    position: relative;
+    display: flex;
+
+
+}
+.mot{
+    font-weight: bold;
+    display: flex;
+    padding-left: 1rem;
+
+}
+
+.haeder-body {
+    flex: 1;
+    margin-left: 4px;
+    box-shadow: 0px 7px 5px rgb(184, 180, 187);
+    height: 95px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 10px;
+
+}
+
+.info {
+    display:block;
+    text-align: center;
+    font-size:140%;
+    font-weight: bold;
+    color: rgb(27, 127, 255);
+    text-shadow:  0px 8px 5px 5px rgb(27, 127, 255);;
+
+}
+.lien{
+    text-align:right;
+    padding: 2%;
+}
+.titre{
+    font-size: 18px;
+}
+
+.total {
+    margin-left: 3px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.stat-header {
+    display: flex;
+    width: 99%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+}
+.moi{
+    padding-left: 1rem;
+}
+
+.staBackOffice{
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.selctBack{
+  margin-top: 1rem;
+  width: 25%;
+  align-content: center;
+
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+

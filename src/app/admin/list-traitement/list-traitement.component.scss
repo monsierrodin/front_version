@@ -1,0 +1,141 @@
+.telechargemt{
+    color: #0000ff;
+    cursor: pointer;
+    border-bottom: solid 1px #0000ff
+}
+.action_back{
+
+    width: 2cm;
+    text-align: center;
+
+}
+.refuser{
+    background-color: rgb(238, 231, 231);
+    color: red;
+    height: auto;
+}
+.refuser:hover{
+    background-color: rgb(175, 8, 8);
+    color: rgb(245, 239, 239);
+    height: auto;
+}
+.okok{
+    margin-left: 0.5rem;
+    background-color: rgb(238, 231, 231);
+    color: rgb(10, 127, 255);
+    height: auto;
+}
+.okok:hover{
+    background-color: rgb(12, 127, 255);
+    color: rgb(255, 255, 255);
+    height: auto;
+}
+.action_client{
+    padding-left: 1cm;
+    width: 3.6cm;
+}
+.action{
+    padding-left: 0.2rem;
+    text-align: center;
+    width: 2rem;
+}
+.tr-ligne{
+    line-height: 0.5cm;
+}
+.test{
+    color: violet
+
+
+}
+.body{
+    color: black
+
+
+}
+.daty {
+    font-size: 25px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: .3rem;
+
+}
+.container-dasboard {
+    width: 100%;
+    padding: 1rem;
+    zoom: .8;
+    min-width: 900px;
+}
+.list{
+    width: 100%;
+    text-align:center ;
+    font-size: 25px;
+    font-weight: bold;
+
+
+}
+.header-page {
+    display: flex;
+    justify-content: space-between;
+}
+.haeder-body {
+    flex: 1;
+    margin-left: 4px;
+    box-shadow: 0px 7px 5px rgb(184, 180, 187);
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+.accepter{
+    padding-left: 1rem;
+    margin-left: 1rem;
+}
+.vide{
+    width: 100%;
+    font-weight: bold;
+    text-shadow: 0px 7px 5px rgb(13, 193, 199);
+    padding-top: 2rem;
+    font-size: 25px;
+    color: rgb(11, 161, 172);
+    text-align: center;
+}
+
+.info {
+    display: flex;
+}
+
+.total {
+    margin-left: 3px;
+    font-size: 40;
+    font-weight: bolder;
+}
+.stat-header {
+    display: flex;
+    width: 50%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+}
+.mod{
+    margin-left: 0.5rem;
+}
+.pagination{
+    display: flex;
+    justify-content: end;
+}
+
+.table {
+    background: #ffffff;
+    color: rgb(0, 6, 14);
+    font-size: .85rem;
+
+
+}
+.teteTable{
+    background: rgb(37, 188, 214);
+
+}
+.bodyyy{
+    text-size-adjust:initial;
+}

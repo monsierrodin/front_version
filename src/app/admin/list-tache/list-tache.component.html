@@ -1,0 +1,58 @@
+
+<div class="container-dasboard">
+
+    <div class="header-page">
+        <div class="titre">
+            <label >Liste taches</label>
+        </div>
+    </div>
+
+    <div class="stat-body">
+        <div class="stat-header">
+        </div>
+
+            <div class="card" *ngIf="taches">
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="table-responsive">
+            <table class="table table-bordered ">
+                <thead class="">
+                    <tr class="teteTable">
+                        <th>Code</th>
+                        <th>Client</th>
+                        <th>Consigne</th>
+                        <th>Date d'operation</th>
+                        <th>Priorité</th>
+                        <th>Status</th>
+                        <th *ngIf="role =='BACKOFFICE'">Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of taches |paginate:{itemsPerPage:60,currentPage:page,totalItems:totalLenght}">
+                    <tr *ngIf="item.status!=='Traitée' && item.status!=='En Attente'">
+                        <td class="tache">{{item.codeTache}}</td>
+                        <td class="tache">{{item.appUser.nom}}</td>
+                        <td><span class="telechargemt" (click)="voirmessage(item.description)">voir</span></td>
+                        <td>{{item.dateOperation | date:'d/M/yy - h:mm:ss'}}</td>
+                        <td class="urgent" *ngIf="item.priority=='Urgent'">{{item.priority}}</td>
+                        <td class="normal" *ngIf="item.priority=='Moyenne'">{{item.priority}}</td>
+                        <td class="tres_urgent" *ngIf="item.priority=='Tres urgent'">{{item.priority}}</td>
+                        <td class="instance"  *ngIf="item.status=='En instance'">{{item.status}}</td>
+                        <td class="encour" *ngIf="item.status=='En cours'">{{item.status}}</td>
+                        <td *ngIf="role =='BACKOFFICE' && item.status!=='En Attente'">
+                            <label *ngIf="item.status=='En cours'" class="deja"  >Deja consigné</label>
+                            <a *ngIf="item.status=='En instance'" class="consigner"  (click)="ConsignerTache(item.id)">Consigner</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <pagination-controls (pageChange)="page=$event"></pagination-controls>
+            </div>
+            </div>
+        </div>
+
+        </div>
+        </div>
+
+</div>
+

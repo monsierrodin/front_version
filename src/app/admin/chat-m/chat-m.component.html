@@ -1,0 +1,107 @@
+<div class="chat-container">
+    <div class="info-group">
+        <button  *ngIf="role=='ADMIN'" class="btn btn-sm btn-success" routerLink="/admin/groupDiscussion">Info-Group</button>
+        <button  *ngIf="role!='ADMIN'" ></button>
+    </div>
+    <div class="chat">
+        <div class="chat-list-user">
+            <div class="user">
+                <span>{{nomDestinateur}}</span>
+                <ul>
+                    <div class="userListe">
+                        <Label class="UtiListe">Groupe de discussion</Label>
+                        <label class="lab"  *ngFor="let item of listGroup" (click)="selectGroup(item.id,item.nom)">
+                            <span><img class="profile" src="../assets/images/group.png" width="30px" height="30px" >
+                            - {{ item.nom}} <span></span> </span>
+                        </label>
+                    </div>
+
+                    <div *ngIf="role =='ADMIN'" class="userList">
+                        <Label class="UtiList">Utilisateurs</Label>
+                        <label class="lab"
+                        *ngFor="let item of User"  (click)="selectUser(item.id,item.email)">
+                        <span (click)="test(item.id)" >
+                         <img class="profile" src="../assets/images/user1.png" width="30px" height="30px"> -
+                          <label class="connecte" *ngIf="item.etat==1"></label>
+                          {{ item.nom}}</span><span *ngIf="test2(item.id)!=0" class="mess" >{{test2(item.id)}}</span>
+                    </label>
+
+                    </div>
+                    <div *ngIf="role =='BACKOFFICE'" class="userList">
+                      <Label class="UtiList">Utilisateur</Label>
+                      <label class="lab"
+                      *ngFor="let item of User"  (click)="selectUser(item.id,item.email)">
+                      <span (click)="test(item.id)" *ngIf="item.role=='ADMIN'">
+                       <img class="profile" src="../assets/images/user1.png" width="30px" height="30px"> -
+                       <label class="connecte" *ngIf="item.etat==1"></label>
+                        {{ item.nom}}</span><span *ngIf="test2(item.id)!=0" class="mess" >{{test2(item.id)}}</span>
+                  </label>
+                  </div>
+                </ul>
+            </div>
+        </div>
+        <div class="chat-byUser" *ngIf="selected==false">
+            <div class="header">
+                <span>{{nomExpediteur}}</span>
+            </div>
+            <div  #scrollableElement class="scrollable-element" (scroll)="onScroll()">
+                <ul>
+                    <li *ngFor="let item of listMessage"
+                        [ngClass]="item.idExp==idUser? 'isExpediteur':'isDestinateur'">
+                        <span>{{item.message}} <br>
+                            <span  class="spanIsDes"> le {{item.dateMsg | date:'d/M/yy, h:mm:ss' }}</span>
+                        </span>
+
+
+                    </li>
+                </ul>
+            </div>
+            <div class="footer" *ngIf="checkClient">
+                <form [formGroup]="formMessage" (ngSubmit)="ajouterMessage()">
+                    <textarea type="text" class="form-control" placeholder="Ecrire votre message"
+                        formControlName="message"></textarea>
+                        <button [disabled]="formMessage.invalid" *ngIf="formMessage.invalid"   class="btn no_sending ">
+                            <img src="../assets/images/no_send.png" height="35px" alt="">
+                        </button>
+
+                        <button *ngIf="formMessage.valid" type="submit"  class="btn sending">
+                            <img src="../assets/images/send.png" height="35px" alt="">
+                        </button>
+                </form>
+
+            </div>
+        </div>
+        <div class="chat-byUser" *ngIf="selected">
+            <div class="header">
+                <span>{{nomGroupCheck}}</span>
+            </div>
+            <div class="bodyGroup">
+                <ul>
+                    <li *ngFor="let item of listMessageByGroup"
+                        [ngClass]="item.user.id==idUser? 'isDestinateur':'isExpediteur'">
+                        <span class="span">{{item.message}} <br>
+                            <span  *ngIf="item.user.id==idUser" class="spanIsDes"> {{item.dateMsg | date:'d/M/yy, h:mm:ss'}}</span>
+
+                        <span  *ngIf="item.user.id!=idUser" class="spanIsDes">De {{item.user.nom}} le {{item.dateMsg | date:'d/M/yy, h:mm:ss'}}</span>
+                        </span>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="footer">
+                <form [formGroup]="formMessageByGroup" (ngSubmit)="ajouterMessageGroup()">
+                    <textarea type="text" class="form-control" placeholder="Ecrire votre message"
+                        formControlName="messageGroup"></textarea>
+                        <button [disabled]="formMessageByGroup.invalid" *ngIf="formMessageByGroup.invalid"   class="btn no_sending ">
+                            <img src="../assets/images/no_send.png" height="35px" alt="">
+                        </button>
+
+                        <button *ngIf="formMessageByGroup.valid" type="submit"  class="btn sending">
+                            <img src="../assets/images/send.png" height="35px" alt="">
+                        </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

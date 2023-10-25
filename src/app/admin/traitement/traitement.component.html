@@ -1,0 +1,35 @@
+<div class="container" >
+  <div class="col-sm-6 offset-sm-3" >
+
+      
+<form [formGroup]="formTraitement" (ngSubmit)="ajouterTraitement()" class="shadow p-5 forme" style="color: brown;" >
+      <h3 class="text-center">Envoie de traitrement</h3>
+       <hr>
+
+      <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Votre message </label>
+          <textarea class="form-control" formControlName="message"  id="validationDefault01" placeholder="Votre Message" rows="2" required></textarea>
+          <small *ngIf="formTraitement.controls['message'].errors && formTraitement.controls['message'].touched" class="text-danger">
+            Votre message est obligatoire
+          </small>
+      </div> 
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Dure de Audio</label>
+        <input type="number" class="form-control"  formControlName="duree">
+        <small *ngIf="formTraitement.controls['duree'].errors && formTraitement.controls['duree'].touched" class="text-danger">
+          Duree obligatoire en [secondes]
+        </small>
+    </div> 
+  
+    <div class="form-group" >
+          <label for="form-label">Deposer votre Fichier</label>
+          <input type="file"  (change)="onSelectFile($event)" formControlName="fichier1" class="form-control" accept=".docx">
+          <small *ngIf="formTraitement.controls['fichier1'].errors && formTraitement.controls['fichier1'].touched" class="text-danger">
+            Deposer votre fichier obligatoirement
+          </small>
+      </div>
+     <p class="d-grid"><button [disabled]="formTraitement.invalid" type="submit" class="" class="btn btn-primary mt-4">Envoyer votre traitement</button></p>
+</form>  
+</div>
+</div>
+

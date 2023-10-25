@@ -1,0 +1,29 @@
+.container{
+    padding-top: 3cm;
+    border-radius: 10cm;
+    min-width: 900px;
+    zoom: .8;
+    
+}
+.forme{
+    align-items: center;
+    max-width: 600px;
+}
+@media screen and(max-width:600px) {
+    .forme{
+        align-items: center;
+        max-width: 400px;
+        min-width: 250px;
+        width: 60%;
+        text-align: center;
+    }
+    .container{
+        padding-top: 2cm;
+        margin-left: 1cm;
+        min-width: 600px;
+        zoom: .8;
+        
+        
+    }
+    
+}

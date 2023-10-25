@@ -1,0 +1,129 @@
+/* open false*/
+.navbar-container {
+    background-color:rgb(37, 188, 214);
+    width: 5rem;
+    height: 200vh;
+    border-radius:1ch;
+    position: relative;
+    zoom: .8;
+
+
+}
+
+.logo-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: .25rem;
+    align-items: center;
+    height: 75px;
+    border-bottom: 1px solid aliceblue;
+
+}
+
+.logo-container .logo {
+    padding-left: .5rem;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.507);
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.logo-container .logo span .text-o {
+    color: rgb(219, 207, 207);
+    font-size: 35px;
+    padding-left: 10px;
+
+
+}
+
+.logo-container .logo .text-c {
+    font-size: 40px;
+    height: 60px;
+    cursor: pointer;
+    width: 2rem;
+    padding-left: 9px;
+    padding-bottom: 2px;
+    background-color:rgb(37, 188, 214);
+    border-radius:15%;
+    font-style: italic;
+
+}
+
+.logo-container .logo-close {
+    color: rgb(8, 113, 139);
+    font-size: 15px;
+    cursor: pointer;
+    padding-right: 4px;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    width: 2em;
+    border-radius: 10rem;
+}
+
+
+.sidenav-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 0;
+    padding: 1rem;
+}
+
+.sidenav-nav .nav-item {
+    width: 100%;
+    margin-bottom: .65rem;
+}
+
+.sidenav-nav .nav-item .nav-item-link {
+    display: flex;
+    align-items: center;
+    color: rgb(22, 20, 20);
+    height: 2.4rem;
+    text-decoration: none;
+    transition: all 2s ease-out;
+    border-radius: .5rem;
+    font-weight: 450;
+}
+
+.sidenav-nav .nav-item .nav-item-link .nav-link-icon {
+    font-size: 20px;
+    padding-left: .7rem;
+    width: 2rem;
+    min-width: 2rem;
+    text-align: center;
+}
+
+.sidenav-nav .nav-item .nav-item-link .nav-link-text {
+    margin-left: 1.5em;
+}
+
+.sidenav-nav .nav-item .nav-item-link:hover {
+    background-color: rgb(11, 83, 165);
+    color: black;
+}
+
+/* open true*/
+.navbar-open {
+    width: 13rem;
+    height: 220vh;
+}
+
+.active {
+    background-color: rgb(12, 127, 255);
+
+}
+
+
+.active .nav-link-text {
+    color: #fcfbfa;
+}
+
+.active .nav-link-icon {
+    color: #d4d6d8;
+}
+.imazy{
+  border-radius: 12px;
+}

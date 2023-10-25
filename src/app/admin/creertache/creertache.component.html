@@ -1,0 +1,45 @@
+<div class="container" >
+    <div class="col-sm-6 offset-sm-3">
+    <form  [formGroup]="formOperation" (ngSubmit)="ajouterTache()" class="shadow p-5 form" >
+        <h3 class="text-center tete">Création  tache</h3>
+    <hr>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Consigne</label>
+            <textarea class="form-control" formControlName="description" title="Veillez inserer votre consigne" id="validationDefault01" placeholder="Votre consigne" rows="2" required></textarea>
+            <small *ngIf="formOperation.controls['description'].errors && formOperation.controls['description'].touched" class="text-danger">
+                Le consigne  de votre tache est obligatoire(plus de 10 caractères)
+            </small>
+          </div>
+        <div>
+            <label for="cars">Priorité </label>
+            <select class="form-select" aria-label="Disabled select example" title="Choisir une priorité" formControlName="priority" >
+                <option class="dede" title="30 min apres" value="Tres urgent">Tres urgent</option>
+                <option title="4 heures après" value="Urgent">Urgent</option>
+                <option  title="12 heures après" value="Moyenne">Normale</option>
+                <option title="24 heures après"value="Moyenne">Moyenne</option>
+            </select>
+            <small *ngIf="formOperation.controls['priority'].errors && formOperation.controls['priority'].touched" class="text-danger">
+                Selection obligaoire de la pririté
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="form-label">Fichier doc</label>
+            <input type="file" (change)="onSelectFile($event)" class="form-control" formControlName="fichier1" accept=".docx">
+            <small *ngIf="formOperation.controls['fichier1'].errors && formOperation.controls['fichier1'].touched" class="text-danger">
+                'Fichier obligatoire ' (.docx)
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="form-label">Fichier Audio</label>
+            <input type="file" (change)="onSelectFileAudio($event)" class="form-control" formControlName="fichier2" accept="audio/*,.DS2,.dss,.DSS,.M4A,.m4a,.DSS,ds2">
+            <small *ngIf="formOperation.controls['fichier2'].errors && formOperation.controls['fichier2'].touched" class="text-danger">
+            'Fichier audio obligatoire'
+            </small>
+        </div>
+    <hr>
+        <p class="d-grid"><button [disabled]="formOperation.invalid" type="submit" class="" class="btn btn-primary mt-4">Ajouter</button></p>
+    </form>
+</div>
+</div>
+
+

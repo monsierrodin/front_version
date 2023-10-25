@@ -1,0 +1,39 @@
+<div class="navbar-container" [ngClass]="openNav? 'navbar-open':''">
+    <div class="logo-container">
+        <div class="logo">
+            <span *ngIf="!openNav" class="text-c" (click)=" onOpenNav()"><img class="imazy" src="./../../../assets/images/logo_tete.png" width="47px" height="47px" alt=""></span>
+            <span *ngIf="openNav"><span class="text-o"></span><img class="imazy" src="./../../../assets/images/logo_tete.png" width="160px" height="50px" alt=""> </span>
+        </div>
+        <span class="logo-close" *ngIf="openNav" title="fermer" (click)="onColseNav()">X</span>
+    </div>
+    <ul *ngIf="roles =='ADMIN'" class="sidenav-nav">
+        <li  class="nav-item" *ngFor="let item of data">
+            <a *ngIf="servi.getMatch(item.role)" class="nav-item-link" [routerLink]="[item.routeLink]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                <i class="nav-link-icon" [ngClass]="item.icon"></i>
+                <span class="nav-link-text" *ngIf="openNav">{{item.label}}</span>
+            </a>
+        </li>
+
+    </ul>
+    <ul *ngIf="roles =='CLIENT'" class="sidenav-nav">
+        <li  class="nav-item" *ngFor="let items of datas">
+            <a *ngIf="servi.getMatch(items.role)" class="nav-item-link" [routerLink]="[items.routeLink]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                <i class="nav-link-icon" [ngClass]="items.icon"></i>
+                <span class="nav-link-text" *ngIf="openNav">{{items.label}}</span>
+            </a>
+        </li>
+
+    </ul>
+    <ul *ngIf="roles =='BACKOFFICE'" class="sidenav-nav">
+        <li  class="nav-item" *ngFor="let itemss of datass">
+            <a *ngIf="servi.getMatch(itemss.role)" class="nav-item-link" [routerLink]="[itemss.routeLink]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                <i class="nav-link-icon" [ngClass]="itemss.icon"></i>
+                <span class="nav-link-text" *ngIf="openNav">{{itemss.label}}</span>
+            </a>
+        </li>
+
+    </ul>
+</div>

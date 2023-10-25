@@ -1,0 +1,25 @@
+<div class="container" >
+    <div class="col-sm-6 offset-sm-3" >     
+  <form [formGroup]="formTraitement" (ngSubmit)="modTraitement()" class="shadow p-5 forme" style="color: brown;" >
+        <h3 class="text-center">Modification de traitrement {{d}}</h3>
+         <hr>      
+        <div>
+          <label for="">Nombe de mots</label>
+            <input type="number" class="form-control"  formControlName="mot">
+            <small *ngIf="formTraitement.controls['mot'].errors && formTraitement.controls['mot'].touched" class="text-danger">
+              £[1,12]chifres
+        </small>
+      </div>
+      <div>
+        <label for="">Nombe de page</label>
+          <input type="number" class="form-control"  formControlName="page">
+          <small *ngIf="formTraitement.controls['page'].errors && formTraitement.controls['page'].touched" class="text-danger">
+              £[1,7]chifres
+          </small>
+    </div>  
+       <p class="d-grid"><button [disabled]="formTraitement.invalid" type="submit" class="" class="btn btn-primary mt-4">Modifier le traitement</button></p>
+    </form>  
+  </div>
+  </div>
+  
+  

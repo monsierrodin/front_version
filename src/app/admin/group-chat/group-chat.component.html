@@ -1,0 +1,51 @@
+<div class="group-container">
+    <div class="body">
+        <div class="list">
+            <div class="btnNouveau">
+                <button class="btn btn-success" (click)="openModal=true">Nouveau</button>                
+            </div>
+            <ul>
+                <li *ngFor="let item of listGroup"><span class="spanA">{{item.nom}}</span><span (click)="selectGroup(item.id,item.nom)" class="spanB bg-success">info</span></li>
+            </ul>
+        </div>
+        <div class="info-group">
+            <div class="title">
+                <span>Groupe:</span>
+                <span>{{nomGrop}}</span>
+            </div>
+            <div class="ifon-membre">
+                <div  class="membre">
+                    <div class="span">
+                        <span>Membres ({{nombreMenbres}})</span>
+                    </div>
+                    <ul>
+                        <li *ngFor="let item of listUserByGroup">{{item.nom}}</li>                    
+                    </ul>
+                </div>
+                <div class="invitation">
+                    <div class="span">
+                        <span>Utilisateurs</span>
+                    </div>
+                    <ul>
+                        <li *ngFor="let item of User"><span class="nom-utilisateur">{{item.nom}}</span><span (click)="addUserByGroup(item.id)" class="spanbtn bg-primary">Inviter</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="openModal" class="nouveau">
+        <form [formGroup]="formGroup" (submit)="ajoutGroup()">
+            <div class="title">
+                <span>noveau groupe</span>
+            </div>
+            <div class="form-group">
+                <label for="">Nom :</label>
+                <input type="text" name="" id="" class="form-control" placeholder="Nom group" formControlName="nom">
+            </div>
+            <div class="button">
+                <button type="submit" class="btn btn-primary btnAjouter">Ajouter</button>
+                <span (click)="fermeModal()" class="btn btn-danger btnAnnuller">Annuller</span>
+            </div>
+        </form>
+    </div>
+</div>

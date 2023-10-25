@@ -1,0 +1,251 @@
+<div class="container-dasboard">
+    <div *ngIf="role =='ADMIN'" class="header-page">
+        <div class="haeder-body">
+            <div >
+                <label class="titre">Total taches</label><br>
+                <label class="info">{{list_tout}}</label>
+            </div>
+            <a class="lien" href="/admin/list_tache">Liste taches</a>
+        </div>
+        <div class="haeder-body">
+            <div >
+                <label class="titre">En Instance </label><br>
+                <label class="info">{{list_instance}}</label>
+            </div>
+            <a class="lien" href="/admin/list_tache">Liste taches</a>
+        </div>
+        <div class="haeder-body">
+            <div >
+                <label class="titre">Total Encour</label><br>
+                <label class="info">{{list_encours}}</label>
+            </div>
+            <a class="lien" href="/admin/list_tache">Liste taches</a>
+        </div>
+        <div class="haeder-body">
+            <div >
+                <label class="titre">En attente de validation</label><br>
+                <label class="info"> {{list_validation}}</label>
+            </div>
+            <a class="lien" href="admin/your_liste_traitement">validation</a>
+        </div>
+        <div class="haeder-body">
+            <div >
+                <label class="titre">Total taches traitées.</label><br>
+                <label class="info">{{list_traitee}}</label>
+            </div>
+
+        </div>
+    </div>
+    <!---BackOfiice-->
+    <div *ngIf="role =='BACKOFFICE'" class="header-page">
+        <div class="haeder-body">
+            <div >
+                <label class="titre">Total taches</label><br>
+                <label class="info">{{list_tout}}</label>
+            </div>
+            <a class="lien" (click)="paginer()">Liste taches</a>
+        </div>
+        <div class="haeder-body">
+            <div >
+                <label class="titre">En Instance </label><br>
+                <label class="info">{{list_instance}}</label>
+            </div>
+            <a class="lien" (click)="paginer()">Liste taches</a>
+        </div>
+        <div class="haeder-body">
+            <div >
+                <label class="titre">Total Encour</label><br>
+                <label class="info" >{{list_encours_bac}}</label>
+            </div>
+            <a class="lien" (click)="paginer()">Liste taches</a>
+        </div>
+        <div class="haeder-body">
+            <div >
+                <label class="titre">En attente de validation</label><br>
+                <label class="info"> {{list_validation_back}}</label>
+            </div>
+        </div>
+        <div class="haeder-body">
+            <div >
+                <label class="titre">Total taches traitées.</label><br>
+                <label class="info">{{list_traitee_back}}</label>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="stat-body">
+    <div  class="stat-header" >
+                <div *ngIf="role =='ADMIN'" class="select">
+                            <div>
+                                <select  class="form-select" (change)="getAnnee($event)">
+                                        <option value="3">---Annee---</option>
+                                        <option *ngFor="let year of years"  [value]="year">{{ year }}</option>
+                                </select>
+                            </div>
+                            <div class="moi">
+                                <select class="form-select" (change)="getMoi($event)">
+                                    <option value="12">-------Par mois------</option>
+                                    <option value="0">Janvier</option>
+                                    <option value="1">Fevrier</option>
+                                    <option value="2">Mars</option>
+                                    <option value="3">Avril</option>
+                                    <option value="4">Mai</option>
+                                    <option value="5">Juin</option>
+                                    <option value="6">Juillet</option>
+                                    <option value="7">Aout</option>
+                                    <option value="8">Septembre</option>
+                                    <option value="9">Octobre</option>
+                                    <option value="10">Novembre</option>
+                                    <option value="11">Decembre</option>
+                                </select>
+                            </div>
+                            <div class="client">
+                                <select class="form-select" (change)="getClient($event)">
+                                    <option (click)="showLabel=false" *ngFor="let email of resultat" [value]="email.reception.operationEntree.appUser.email">{{email.reception.operationEntree.appUser.nom}}</option>
+                                </select>
+                            </div>
+                </div>
+
+                <div *ngIf="role =='BACKOFFICE'" class="select">
+                    <div>
+                        <select  class="form-select" (change)="getAnneeB($event)">
+                                <option value="3">---Annee---</option>
+                                <option *ngFor="let year of years"  [value]="year">{{ year }}</option>
+                        </select>
+                    </div>
+                    <div class="moi">
+                        <select class="form-select" (change)="getMoiB($event)">
+                            <option value="12">-------Par mois------</option>
+                            <option value="0">Janvier</option>
+                            <option value="1">Fevrier</option>
+                            <option value="2">Mars</option>
+                            <option value="3">Avril</option>
+                            <option value="4">Mai</option>
+                            <option value="5">Juin</option>
+                            <option value="6">Juillet</option>
+                            <option value="7">Aout</option>
+                            <option value="8">Septembre</option>
+                            <option value="9">Octobre</option>
+                            <option value="10">Novembre</option>
+                            <option value="11">Decembre</option>
+                        </select>
+                    </div>
+                    <div class="client">
+                        <select class="form-select" (change)="getClientB($event)">
+                            <option (click)="showLabel=false" *ngFor="let email of resultat" [value]="email.reception.operationEntree.appUser.email">{{email.reception.operationEntree.appUser.nom}}</option>
+                        </select>
+                    </div>
+        </div>
+
+                <div class="nombre">
+                            <div >
+                                <label class="page">Pages traitées: {{totalPage}} </label>
+                            </div>
+                            <div >
+                                <label class="mot">Mots traités: {{totalConst}} </label>
+                            </div>
+                        </div>
+                </div>
+        <div class="card" *ngIf="resultat" >
+
+            <div class="">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="table-responsive">
+                    <table class="table table-bordered ">
+
+                    <thead >
+                        <tr class="teteTable">
+                            <th>Code Tache</th>
+                            <th *ngIf="role !=='CLIENT'">Client</th>
+                            <th>Pages</th>
+                            <th>Mots</th>
+                            <th>Date d'envoie</th>
+                            <th>Date retour</th>
+                            <th>Responsable</th>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let item of resultat |paginate:{itemsPerPage:4,currentPage:page,totalItems:totalLenght}" class="tbody bodyyy">
+                        <tr *ngIf="item.reception.operationEntree.status =='Traitée'" class="tr-ligne" >
+                            <td *ngIf="role =='ADMIN'">{{item.reception.operationEntree.codeTache}}</td>
+                            <td *ngIf="role =='ADMIN'">{{item.reception.operationEntree.appUser.nom}}</td>
+                            <td *ngIf="role =='ADMIN'">{{item.page}}</td>
+                            <td *ngIf="role =='ADMIN'">{{item.mot}}</td>
+                            <td *ngIf="role =='ADMIN'" class="date">{{item.reception.operationEntree.dateOperation | date:'dd-MM-yyyy'}}</td>
+                            <td *ngIf="role =='ADMIN'" class="date">{{item.dateTraitement | date:'dd-MM-yyyy'}}</td>
+                            <td *ngIf="role =='ADMIN'">{{item.reception.appUser.nom}}</td>
+
+                        </tr>
+                        <tr *ngIf="item.reception.operationEntree.status =='Traitée'" class="tr-ligne" >
+                            <td *ngIf="role =='BACKOFFICE'">{{item.reception.operationEntree.codeTache}}</td>
+                            <td *ngIf="role =='BACKOFFICE'">{{item.reception.operationEntree.appUser.nom}}</td>
+                            <td *ngIf="role =='BACKOFFICE'">{{item.page}}</td>
+                            <td *ngIf="role =='BACKOFFICE'">{{item.mot}}</td>
+                            <td *ngIf="role =='BACKOFFICE'" class="date">{{item.reception.operationEntree.dateOperation | date:'dd-MM-yyyy'}}</td>
+                            <td *ngIf="role =='BACKOFFICE'" class="date">{{item.dateTraitement | date:'dd-MM-yyyy'}}</td>
+                            <td *ngIf="role =='BACKOFFICE'">{{item.reception.appUser.nom}}</td>
+
+                        </tr>
+                        <tr *ngIf="item.reception.operationEntree.status =='Traitée'" class="tr-ligne" >
+                            <td *ngIf="role =='CLIENT'">{{item.reception.operationEntree.codeTache}}</td>
+                            <td *ngIf="role =='CLIENT'">{{item.page}}</td>
+                            <td *ngIf="role =='CLIENT'">{{item.mot}}</td>
+                            <td *ngIf="role =='CLIENT'"class="date">{{item.reception.operationEntree.dateOperation | date:'dd-MM-yyyy'}}</td>
+                            <td *ngIf="role =='CLIENT'"class="date">{{item.dateTraitement | date:'dd-MM-yyyy'}}</td>
+                            <td *ngIf="role =='CLIENT'">{{item.reception.appUser.nom}}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+
+                    <div class="pagination">
+                    <pagination-controls (pageChange)="page=$event"></pagination-controls>
+                    </div>
+                    </div>
+      </div>
+
+    </div>
+
+    </div>
+
+
+    </div>
+
+<!-- Statut back Office-->
+    <div >
+      <Label *ngIf="role =='ADMIN'" class="staBackOffice">Status des operations sur le backOffice</Label>
+      <div *ngIf="role =='ADMIN'" class="selctBack">
+        <select class="form-select" (change)="getB($event)">
+           <option value="999999999999999999">-------Selectionner BackOffice------</option>
+            <option (click)="showLabel=false" *ngFor="let items of User" [value]="items.id">{{items.nom}}</option>
+        </select>
+    </div>
+      <div *ngIf="role =='ADMIN'" class="">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="table-responsive">
+          <table class="table table-bordered ">
+            <thead >
+                <tr class="teteTable">
+                    <th>Taches Traitées</th>
+                    <th>Taches En attente de validation</th>
+                    <th>Taches En cours</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr class="tr-ligne" >
+                    <td *ngIf="role =='ADMIN'">{{this.list_traitee_backOffice}}</td>
+                    <td *ngIf="role =='ADMIN'">{{this.list_validation_backOffice}}</td>
+                    <td *ngIf="role =='ADMIN'">{{this.list_encour_BackOffice}}</td>
+                </tr>
+            </tbody>
+            </table>
+
+        </div>
+</div>
+
+</div>
+
+</div>
+

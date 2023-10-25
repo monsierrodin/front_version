@@ -1,0 +1,18 @@
+<div class="sidebar-container">
+    <div class=" .tete"></div>
+            <div class="societe">
+                <span class="titre"><h3><img class="imazy" src="./../../../assets/images/logo_mini.png" width="170px" height="50px" alt=""></h3></span>
+            </div>
+            <div class="deconnection">
+                <div>
+                <label class="label"><i class="bi bi-person "></i>{{nom}}-({{role}})</label>
+                <div [hidden]="!openModal" class="modalProfil">
+                </div>
+            </div>
+            <div class="btn">
+                <a class="deconnexion-btn" (click)="openModaProfil()" title="Deconnecter">
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
+            </div>
+    </div>
+</div>

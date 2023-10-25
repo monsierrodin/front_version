@@ -1,0 +1,147 @@
+.deja{
+    background-color: rgb(17, 126, 250);
+    color: white;
+}
+.action{
+
+    line-height: 1cm;
+    text-align: center;
+    width:4.1cm;
+}
+.consigner{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+.titre{
+
+    text-align: center;
+    width: 100%;
+    font-size: 30px;
+    background-color: transparent;
+
+
+}
+.normal{
+    font-weight: bold;
+    color: rgb(18, 128, 255);
+
+
+}
+.pagination{
+    display: flex;
+    justify-content: end
+}
+.pas_consign{
+    background-color: rgb(206, 86, 17);
+}
+.instance{
+    color: red;
+}
+.encour{
+    color: rgb(11, 90, 207);
+}
+.consign{
+    background-color: green;
+}
+.table {
+    background: #ffffff;
+    color: rgb(0, 6, 14);
+    font-size: .85rem;
+
+
+}
+.teteTable{
+    background: rgb(37, 188, 214);
+
+}
+.bodyyy{
+    text-size-adjust:initial;
+}
+.tache{
+    font-weight:inherit;
+}
+.telechargemt{
+    color: #0000ff;
+    cursor: pointer;
+    border-bottom: solid 1px #0000ff
+
+}
+
+.tres_urgent{
+    font-weight: bold;
+    color: red;
+
+
+}
+.urgent{
+    font-weight: bold;
+    color: rgb(131, 139, 55);
+
+}
+.test{
+    color: violet
+
+
+}
+.body{
+    color: black
+
+
+}
+.daty {
+    font-size: 25px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: .3rem;
+
+}
+.container-dasboard {
+    width: 100%;
+    padding: 1rem;
+    min-width: 900px;
+    zoom: .8;
+}
+
+.header-page {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.haeder-body {
+    flex: 1;
+    margin-left: 4px;
+    box-shadow: 0px 7px 5px rgb(184, 180, 187);
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+
+.info {
+    display: flex;
+}
+
+.total {
+    margin-left: 3px;
+    font-size: 40;
+    font-weight: bolder;
+}
+
+.stat-header {
+    display: flex;
+    width: 50%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+}
+@media screen and(max-width:800px) {
+    .container-dasboard{
+        zoom: .8;
+
+    }
+
+}

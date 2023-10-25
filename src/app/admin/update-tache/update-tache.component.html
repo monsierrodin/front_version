@@ -1,0 +1,45 @@
+<div class="container" >
+    <div class="col-sm-6 offset-sm-3"> 
+    <form [formGroup]="formOperation" (ngSubmit)="updateTache()" class="shadow p-5" >
+        <h3 class="text-center">Modification de la tache{{d}}</h3>
+    <hr>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Description de la tache</label>
+            <textarea class="form-control" formControlName="description" id="validationDefault01" placeholder="Descriptiption" rows="2" required></textarea>
+            <small *ngIf="formOperation.controls['description'].errors && formOperation.controls['description'].touched" class="text-danger">
+                La description de votre tache est obligatoire(plus de 10 caractères)
+            </small>
+          </div>
+        <div>
+            <label for="cars">Priorité </label>
+            <select class="form-select" aria-label="Disabled select example"  formControlName="priority" >
+                <option value="Tres urgent">Tres urgent</option>
+                <option value="Urgent">Urgent</option>
+                <option value="Moyenne">Moyenne</option>
+            </select>
+            <small *ngIf="formOperation.controls['priority'].errors && formOperation.controls['priority'].touched" class="text-danger">
+                Selection obligaoire de la pririté
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="form-label">Fichier doc</label>
+            <input type="file" (change)="onSelectFile($event)" class="form-control" formControlName="fichier1" accept=".docx">
+            <small *ngIf="formOperation.controls['fichier1'].errors && formOperation.controls['fichier1'].touched" class="text-danger">
+                Inserer votre fichier (.docx)
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="form-label">Fichier Audio</label>
+            <input type="file" (change)="onSelectFileAudio($event)" class="form-control" formControlName="fichier2" accept=".mp3">
+            <small *ngIf="formOperation.controls['fichier2'].errors && formOperation.controls['fichier2'].touched" class="text-danger">
+                Inserer votre fichier Audio
+            </small>
+        </div><hr>
+        <p class="d-grid"><button [disabled]="formOperation.invalid" type="submit" class="" class="btn btn-primary mt-4">Modifier</button></p>
+
+    </form>  
+</div>
+</div>
+
+    
+
